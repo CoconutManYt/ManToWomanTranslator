@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Man to Woman Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 350px; /* Increased width for better spacing */
+        }
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c2185b;
+        }
+        textarea {
+            width: 80%; /* Adjusted to match the input width */
+            height: 100px;
+            margin-top: 20px;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto; /* Center the textarea */
+            margin-right: auto; /* Center the textarea */
+        }
+        .copy-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #388e3c;
+        }
+        .disclaimer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Man to Woman Translator</h1>
+    <input type="text" id="inputText" placeholder="Enter a word or sentence...">
+    <br>
+    <button onclick="translateToWoman()">Translate</button>
+    <textarea id="outputText" readonly placeholder="Translation will appear here..."></textarea>
+    <br>
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+    <p class="disclaimer">Remember this is a joke :)</p>
+</div>
+
+<script>
+    function translateToWoman() {
+        const inputText = document.getElementById("inputText").value;
+        const outputText = document.getElementById("outputText");
+
+        if (inputText.trim() === "") {
+            outputText.value = "Please enter a sentence.";
+            return;
+        }
+
+        // Translation logic with word boundaries
+        let translatedText = inputText.toLowerCase()
+            .replace(/\bi\b/g, "like I totally")    // Only replaces "i" as a word
+            .replace(/\bman\b/g, "girl")
+            .replace(/\bhello\b/g, "omg hi")
+            .replace(/\hi\b/g, "hi my queen !!!")
+            .replace(/\byes\b/g, "yasss")
+            .replace(/\bno\b/g, "nah")
+            .replace(/\bwhy\b/g, "like why tho")
+            .replace(/\bok\b/g, "okayyy")
+            .replace(/\bwhat\b/g, "what even?")
+            .replace(/\bcool\b/g, "so cool, like seriously")
+            .replace(/\blove\b/g, "looove")
+            .replace(/!+/g, "!!!")  // For multiple exclamation marks
+            .replace(/\bsure\b/g, "like, totally")
+            .replace(/\bfine\b/g, "ugh, whatever")
+            .replace(/\btired\b/g, "exhausted, like seriously")
+            .replace(/\bamazing\b/g, "ah-mah-zing")
+            .replace(/\bsorry\b/g, "sooo sorry")
+            .replace(/\bhard\b/g, "like, super difficult")
+            .replace(/\bhungry\b/g, "starvinggg")
+            .replace(/\bhappy\b/g, "over the moon!")
+            .replace(/\bwhatever\b/g, "whatevs")
+            .replace(/\bright\b/g, "am I right, though?")
+            .replace(/\bgood\b/g, "fabulous")
+            .replace(/\bnice\b/g, "cute")
+            .replace(/\bfan\b/g, "swifty")
+            .replace(/\bmusic\b/g, "Taylor Swift");
+
+        // Add sparkles for dramatic effect
+        translatedText = "✨ " + translatedText + " ✨";
+
+        // Display the translated text in the textarea
+        outputText.value = translatedText;
+    }
+
+    function copyText() {
+        const outputText = document.getElementById("outputText");
+        outputText.select();  // Selects the text in the textarea
+        document.execCommand("copy");  // Copies the selected text
+        alert("Text copied to clipboard!");  // Show a message
+    }
+</script>
+
+</body>
+</html>
